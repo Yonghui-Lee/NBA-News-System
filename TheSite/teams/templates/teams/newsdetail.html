@@ -1,0 +1,17 @@
+
+<style>
+body{text-align:center}
+.divcss5{margin:0 auto;width:600px;border:1px solid #000}
+/* CSS注释：设置对象边框、宽度、高度 便于观察布局效果 */
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{news.title_text}}</title>
+</head>
+<body style="background-color:#E0FFFF;">
+<h1>{{ news.title_text|safe }}</h1>
+<h3>{{ news.posttime_text }}    {{ news.author_text }}</h3>
+<div class="divcss5"><p>{{ news.content_text|safe }}</p></div>
+</body>
+</html>

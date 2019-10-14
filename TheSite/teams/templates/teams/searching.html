@@ -1,0 +1,62 @@
+{% load static %}
+{% load pagination_tags %}
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>球队热度榜</title>
+    <link rel="stylesheet" href="{% static 'teams/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'teams/main.css' %}">
+
+</head>
+<body style="background-color:#E0FFFF;">
+    <div class="container">
+        <div class="row header-box">
+            <div class="col-md-8">
+                <h1>
+                    <a style="text-decoration: none"> </a>
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <p>
+
+                    <a href="http://127.0.0.1:8000/nba/teams">球队热度榜</a>
+                
+                </p>
+            </div>
+        </div>
+	<div   class="middle" >
+		<form action="{% url 'teams:searching' %}" method="get">
+
+
+			<input type="text" class="input"  name="word" value="{{ word }}">
+			<input type="submit" value="搜一搜" class="submit"  >
+		</form>
+        <p>搜索结果共计：{{ num}}条</p>
+        <p>用时：{{ runtime}}s</p>
+	</div>
+
+<div class="row">
+    <div class="col-md-8">
+
+
+
+{% autopaginate news_list 10 %}
+
+{% for news in news_list  %}
+    <div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork">
+        <span class="text" itemprop="text"> <a href={%  url "teams:news" news.cid %}   >{{news.title_text|safe}}</a></span>
+        <span>{{news.posttime_text}}     {{ news.author_text }}
+        </span>
+        <br>
+    <small class="author" itemprop="author">{{news.content_text|safe}}</small>
+    </div>
+
+
+{% endfor %}
+        {% paginate %}
+    </div>
+    </div>
+</div>
+
+    </div>
+
+</body></html>

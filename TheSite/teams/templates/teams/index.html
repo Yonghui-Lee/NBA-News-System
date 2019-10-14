@@ -1,0 +1,51 @@
+{% load static %}
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>球队热度榜</title>
+    <link rel="stylesheet" href="{% static 'teams/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'teams/main.css' %}">
+
+</head>
+<body style="background-color:#E0FFFF;">
+    <div class="container">
+        <div class="row header-box">
+            <div class="col-md-8">
+                <h1>
+                    <a style="text-decoration: none">球队热度榜</a>
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <p>
+
+                    <a href="http://127.0.0.1:8000/nba">搜索</a>
+                
+                </p>
+            </div>
+        </div>
+
+
+<div class="row">
+    <div class="col-md-8">
+
+
+
+
+
+{% for team in team_list  %}
+    <div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork">
+        <span class="text" itemprop="text"> <a href={%  url "teams:detail" team.pk %}   >{{team.name_text}}</a></span>
+        <span>相关新闻数: <small class="author" itemprop="author">{{team.news_int}}</small>
+        </span>
+    </div>
+
+
+{% endfor %}
+
+    </div>
+    </div>
+</div>
+
+    </div>
+
+</body></html>
